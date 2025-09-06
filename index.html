@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biology Tutor - Dr. Mujtaba</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hero-bg {
+            background-image: url('background_image.png');
+            background-size: cover;
+            background-position: center 20%;
+            background-repeat: no-repeat;
+            background-color: #1a1a1a;
+        }
+        
+        /* Mobile responsive hero background */
+        @media (max-width: 768px) {
+            .hero-bg {
+                background-size: cover;
+                background-position: center 15%;
+                min-height: 100vh;
+            }
+        }
+        
+        /* Desktop responsive positioning */
+        @media (min-width: 1024px) {
+            .hero-bg {
+                background-position: center 25%;
+            }
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        /* Scroll Reveal Animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease-in-out;
+        }
+
+        .scroll-reveal.fade-up {
+            transform: translateY(50px);
+        }
+
+        .scroll-reveal.fade-left {
+            transform: translateX(-50px) translateY(0);
+        }
+
+        .scroll-reveal.fade-right {
+            transform: translateX(50px) translateY(0);
+        }
+
+        .scroll-reveal.fade-down {
+            transform: translateY(-50px);
+        }
+
+        .scroll-reveal.scale {
+            transform: scale(0.9);
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+        }
+
+        /* Stagger animation delays */
+        .scroll-reveal:nth-child(1) { transition-delay: 0.1s; }
+        .scroll-reveal:nth-child(2) { transition-delay: 0.2s; }
+        .scroll-reveal:nth-child(3) { transition-delay: 0.3s; }
+        .scroll-reveal:nth-child(4) { transition-delay: 0.4s; }
+
+        /* Hero banner animation */
+        .hero-banner {
+            animation: slideInFromLeft 1s ease-out;
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Hover pop-up effects */
+        .hover-popup {
+            transform: translateY(0);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .hover-popup:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-card {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .video-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            border-color: #3b82f6;
+        }
+
+        .youtube-button {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .youtube-button:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 20px -5px rgba(220, 38, 38, 0.4);
+        }
+
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-banner {
+                animation: slideInFromBottom 1s ease-out;
+            }
+
+            @keyframes slideInFromBottom {
+                from {
+                    opacity: 0;
+                    transform: translateY(50px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .mobile-text-sm {
+                font-size: 0.875rem;
+                line-height: 1.25rem;
+            }
+
+            .mobile-padding {
+                padding: 1rem;
+            }
+
+            .mobile-margin {
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Ensure video cards don't break on small screens */
+        @media (max-width: 640px) {
+            .video-card img {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 font-sans text-gray-100">
+
+    <!-- Navigation Header -->
+    <nav class="bg-gray-800 shadow-2xl fixed w-full top-0 z-50 border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <h1 class="text-xl md:text-2xl font-bold text-blue-400">Dr. Mujtaba</h1>
+                    <span class="ml-2 text-xs md:text-sm text-gray-400">Biology Tutor</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-300 hover:text-blue-400 transition-colors">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-blue-400 transition-colors">About</a>
+                    <a href="#videos" class="text-gray-300 hover:text-blue-400 transition-colors">Videos</a>
+                    <a href="#contact" class="text-gray-300 hover:text-blue-400 transition-colors">Contact</a>
+                </div>
+                <button class="md:hidden p-2">
+                    <svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen relative pt-16 md:pt-20">
+        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+        
+        <!-- Welcome Banner - Responsive positioning -->
+        <div class="relative z-10 container mx-auto px-4 h-full flex items-end justify-start pb-20 md:pb-32 pl-4 md:pl-8">
+            <div class="max-w-xs md:max-w-md w-full">
+                <div class="hero-banner glass-effect p-4 md:p-5 rounded-xl shadow-2xl">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-2 md:mb-3 leading-tight text-white">
+                        Welcome to<br>
+                        <span class="text-blue-400">Dr. Mujtaba's</span><br>
+                        Biology Tutoring
+                    </h2>
+                    <p class="text-sm md:text-base text-gray-200 mb-3 md:mb-4">
+                        MBBS Doctor Specializing in O-Level, A-Level, MCAT, and General Biology Concepts
+                    </p>
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 md:px-6 py-2 md:py-3 rounded-full text-sm md:text-base font-semibold transition-colors shadow-lg">
+                        Start Learning
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-12 md:py-20 bg-gray-800">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <div class="scroll-reveal fade-right order-2 lg:order-1">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6">About Dr. Mujtaba</h2>
+                    <p class="text-base md:text-lg text-gray-300 mb-4 md:mb-6 leading-relaxed">
+                        Dr. Mujtaba is a qualified MBBS doctor with a passion for teaching biology. He offers comprehensive lessons for O-Level, A-Level, and MCAT students, as well as engaging sessions for children interested in exploring biology concepts.
+                    </p>
+                    <p class="text-base md:text-lg text-gray-300 mb-6 md:mb-8 leading-relaxed">
+                        With years of experience, Dr. Mujtaba makes complex topics easy to understand through interactive and practical approaches. Whether you're preparing for exams or just curious about the wonders of life sciences, join our online tutoring sessions for personalized guidance.
+                    </p>
+                    <div class="grid grid-cols-2 gap-3 md:gap-4">
+                        <div class="bg-blue-900/30 border border-blue-700 p-3 md:p-4 rounded-lg text-center">
+                            <div class="text-xl md:text-2xl font-bold text-blue-400">5+</div>
+                            <div class="text-xs md:text-sm text-gray-400">Years Experience</div>
+                        </div>
+                        <div class="bg-green-900/30 border border-green-700 p-3 md:p-4 rounded-lg text-center">
+                            <div class="text-xl md:text-2xl font-bold text-green-400">100+</div>
+                            <div class="text-xs md:text-sm text-gray-400">Students Taught</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scroll-reveal fade-left order-1 lg:order-2">
+                    <div class="bg-gradient-to-br from-blue-900/50 to-green-900/50 p-6 md:p-8 rounded-2xl border border-gray-700">
+                        <h3 class="text-xl md:text-2xl font-semibold mb-4 text-white">Specializations</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <div class="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
+                                <span class="text-gray-300">O-Level Biology</span>
+                            </li>
+                            <li class="flex items-center">
+                                <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                                <span class="text-gray-300">A-Level Biology</span>
+                            </li>
+                            <li class="flex items-center">
+                                <div class="w-3 h-3 bg-purple-500 rounded-full mr-3"></div>
+                                <span class="text-gray-300">MCAT Preparation</span>
+                            </li>
+                            <li class="flex items-center">
+                                <div class="w-3 h-3 bg-orange-500 rounded-full mr-3"></div>
+                                <span class="text-gray-300">General Biology Concepts</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube Videos Section -->
+    <section id="videos" class="py-12 md:py-20 bg-gray-900">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center mb-8 md:mb-12 scroll-reveal fade-down">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Featured YouTube Videos</h2>
+                <p class="text-base md:text-lg text-gray-400">Explore our educational content and enhance your biology knowledge</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- Video Link 1 -->
+                <a href="https://youtu.be/voZ-qZYcTkY?feature=shared" target="_blank" class="scroll-reveal scale video-card block bg-gray-800 border border-gray-700 rounded-lg overflow-hidden shadow-md">
+                    <img src="https://img.youtube.com/vi/voZ-qZYcTkY/hqdefault.jpg" alt="MCAT Preparation Thumbnail" class="w-full h-40 md:h-48 object-cover" onerror="this.src='https://img.youtube.com/vi/voZ-qZYcTkY/mqdefault.jpg'">
+                    <div class="p-3 md:p-4">
+                        <h3 class="text-lg md:text-xl font-medium mb-2 text-white">MCAT Preparation</h3>
+                        <p class="text-sm md:text-base text-gray-400">Comprehensive guide to preparing for MCAT biology sections with expert tips.</p>
+                    </div>
+                </a>
+                <!-- Video Link 2 -->
+                <a href="https://youtu.be/VcieGBm_LiQ?feature=shared" target="_blank" class="scroll-reveal scale video-card block bg-gray-800 border border-gray-700 rounded-lg overflow-hidden shadow-md">
+                    <img src="https://img.youtube.com/vi/VcieGBm_LiQ/hqdefault.jpg" alt="Introductory Video Thumbnail" class="w-full h-40 md:h-48 object-cover" onerror="this.src='https://img.youtube.com/vi/VcieGBm_LiQ/mqdefault.jpg'">
+                    <div class="p-3 md:p-4">
+                        <h3 class="text-lg md:text-xl font-medium mb-2 text-white">Introductory Video</h3>
+                        <p class="text-sm md:text-base text-gray-400">Get introduced to Dr. Mujtaba and his biology tutoring approach.</p>
+                    </div>
+                </a>
+                <!-- Video Link 3 -->
+                <a href="https://youtu.be/j-zLpHomfa0?feature=shared" target="_blank" class="scroll-reveal scale video-card block bg-gray-800 border border-gray-700 rounded-lg overflow-hidden shadow-md md:col-span-1 lg:col-span-1">
+                    <img src="https://img.youtube.com/vi/j-zLpHomfa0/hqdefault.jpg" alt="Past Paper Discussions Thumbnail" class="w-full h-40 md:h-48 object-cover" onerror="this.src='https://img.youtube.com/vi/j-zLpHomfa0/mqdefault.jpg'">
+                    <div class="p-3 md:p-4">
+                        <h3 class="text-lg md:text-xl font-medium mb-2 text-white">Past Paper Discussions</h3>
+                        <p class="text-sm md:text-base text-gray-400">Review and discuss past exam papers to improve your preparation strategy.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="text-center mt-8 md:mt-12 scroll-reveal fade-up">
+                <a href="https://youtube.com/@biologywithmujtaba-sr8bn?feature=shared" target="_blank" class="youtube-button bg-red-600 hover:bg-red-700 text-white px-6 md:px-8 py-2 md:py-3 rounded-full text-sm md:text-base font-semibold shadow-lg inline-flex items-center">
+                    <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                        <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="hidden sm:inline">Visit Full YouTube Channel</span>
+                    <span class="sm:hidden">YouTube Channel</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-12 md:py-20 bg-gray-800">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-8 md:mb-12 scroll-reveal fade-down">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Get in Touch</h2>
+                <p class="text-base md:text-lg text-gray-400">Ready to start your biology learning journey?</p>
+            </div>
+            <div class="flex justify-center">
+                <div class="scroll-reveal fade-up bg-gray-700/50 border border-gray-600 p-6 md:p-8 rounded-2xl max-w-sm md:max-w-md w-full mx-4">
+                    <h3 class="text-xl md:text-2xl font-semibold mb-4 md:mb-6 text-white">Contact Information</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 md:w-12 md:h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-3 md:mr-4 flex-shrink-0">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                </svg>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <p class="font-semibold text-white text-sm md:text-base">Phone</p>
+                                <p class="text-gray-400 text-sm md:text-base break-all">+923045514277</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 md:w-12 md:h-12 bg-green-600 rounded-lg flex items-center justify-center mr-3 md:mr-4 flex-shrink-0">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <p class="font-semibold text-white text-sm md:text-base">Email</p>
+                                <p class="text-gray-400 text-sm md:text-base break-all">smm154@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 md:mt-6 text-center">
+                        <p class="text-gray-400 text-sm md:text-base">Feel free to reach out for inquiries, scheduling sessions, or any questions about biology!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 text-gray-300 py-8 md:py-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-6 md:mb-8">
+                <h3 class="text-xl md:text-2xl font-bold mb-2 text-white">Dr. Mujtaba Biology Tutoring</h3>
+                <p class="text-gray-500 text-sm md:text-base">Excellence in Biology Education</p>
+            </div>
+            <div class="border-t border-gray-800 pt-6 md:pt-8">
+                <p class="text-gray-500 text-sm md:text-base">&copy; 2025 Dr. Mujtaba Biology Tutoring. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Reveal Animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.scroll-reveal');
+            
+            reveals.forEach(reveal => {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveal.getBoundingClientRect().top;
+                const revealPoint = 150;
+                
+                if (revealTop < windowHeight - revealPoint) {
+                    reveal.classList.add('active');
+                }
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        function smoothScroll() {
+            const links = document.querySelectorAll('nav a[href^="#"]');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset - 80;
+                        
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize animations
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', () => {
+            revealOnScroll();
+            smoothScroll();
+        });
+
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('nav button');
+            let mobileMenuOpen = false;
+            
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', function() {
+                    // Simple mobile menu toggle - you can enhance this later
+                    mobileMenuOpen = !mobileMenuOpen;
+                    console.log('Mobile menu toggled:', mobileMenuOpen);
+                });
+            }
+
+            // Adjust scroll reveal for mobile
+            function adjustScrollReveal() {
+                if (window.innerWidth < 768) {
+                    // More lenient reveal point for mobile
+                    revealPoint = 100;
+                } else {
+                    revealPoint = 150;
+                }
+            }
+
+            window.addEventListener('resize', adjustScrollReveal);
+            adjustScrollReveal();
+        });
+    </script>
+
+</body>
+</html>
